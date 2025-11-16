@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     const country = document.getElementById("country");
-    const button = document.getElementById("lookup");
+    const button = document.getElementById("searchCountry");
     const resultDiv = document.getElementById("result");
 
 
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
         fetch(url)
             .then(response => response.text())
             .then(data => {
-                resultDiv.innerHTML = `<ul>${data}</ul>`;
+                resultDiv.innerHTML = data;
             })
             .catch(err => console.error(err));
     });
