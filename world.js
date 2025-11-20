@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", function(){
-    const country = document.getElementById("country");
-    const button = document.getElementById("searchCountry");
+    const countryInput = document.getElementById("country");
+    const searchCountryBtn = document.getElementById("searchCountry");
     const resultDiv = document.getElementById("result");
+    const searchCityBtn = document.getElementById("searchCity");
 
 
-    button.addEventListener("click", function(){
-        const value = country.value.trim();
-        let url = "world.php?ajax=1";
-         if (value !== "") {
-            url += `&country=${encodeURIComponent(value)}`;
+    function fetchData(lookupType) {
+        const country = countryInput.value.trim();
+        let url = `world.php?ajax=1&lookup=${lookupType}`;
+        if (country !== "") {
+            url += `&country=${encodeURIComponent(country)}`;
         }
 
         fetch(url)
@@ -17,5 +18,13 @@ document.addEventListener("DOMContentLoaded", function(){
                 resultDiv.innerHTML = data;
             })
             .catch(err => console.error(err));
+    }
+
+    searchCountryBtn.addEventListener("click", function() {
+        fetchData("countries");
+    });
+
+    searchCityBtn.addEventListener("click", function() {
+        fetchData("cities");
     });
 });
