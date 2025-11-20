@@ -75,6 +75,8 @@ if ($lookup === 'cities') {
 }
 ?>
 
+
+<!-- First section without the joining and search by cities-->
 <!-- // if (isset($_GET['country'])) {
 // $country = trim($_GET['country']);
 // $country = htmlspecialchars($country, ENT_QUOTES, 'UTF-8');
